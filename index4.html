@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ year }} <br>
+        <button v-on:click="plus">더하기!</button>
+        <button v-on:click="minus">빼기!</button> <br>
+        <form v-on:submit.prevent="submit">
+            <input type="text">
+            <button type="submit">submit</button>
+        </form>
+       
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                year: 2022
+            },
+            methods: {
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert('submitted!!!');
+                    console.log('reload!');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
