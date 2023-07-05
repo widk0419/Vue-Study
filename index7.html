@@ -4,35 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>뷰 기초 익히기6</title>
+    <title>뷰 기초 익히기7</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
+        {{ message }} <br>
         <button @click="changeMessage">Click</button> <br>
-        {{ reversedMessage }} <br>
-        {{ reversedMessage }} <br>
-        {{ reversedMessage }} <br>
+        {{ updated }}
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
                 message: '안녕하세요,위콜렉터입니다!',
+                updated: '아니요'
             },
             methods: {
                 changeMessage() {
-                    if (this.message == '안녕하세요,위콜렉터입니다!') {
-                        this.message = '하늘에서 잠이 쏟아진다';
-                    } else {
-                        this.message = '안녕하세요,위콜렉터입니다!'
-                    }
+                  this.message = '헬로우';
                 }
             },
             computed: {
                 reversedMessage() {
                     return this.message.split('').reverse().join('');
+                }
+            },
+            watch: {
+                message(newVal, oldVal){
+                    console.log(oldVal, newVal);
+                    this.updated = '네';
                 }
             }
         })
