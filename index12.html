@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기 12</title>
+    <style>
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <hello-world></hello-world>
+        <widk-button></widk-button>
+    </div>
+    <!-- <div id="app2">
+        {{ name }} <br>
+        <button @click="changeText">Click!</button>
+        <hr>
+        <widk-button></widk-button>
+    </div> -->
+    <script>
+        Vue.component('hello-world',{
+            template:
+            ` 
+            <div>
+                Hello World!    
+            </div>
+            `
+        })
+        Vue.component('widk-button', {
+            template: 
+                `
+                <div>
+                    {{ name }} <br>
+                    <button @click="changeText">Click!</button>
+                </div>
+                `,
+            data() {
+              return {
+                name: 'widk'
+              }
+            },
+            methods: {
+                changeText(){
+                    this.name = 'widk updated!';
+                }
+            },
+        })
+        const app1 = new Vue({
+            el: '#app1',
+            // data: {
+            //     name: 'widk'
+            // },
+            // methods: {
+            //     changeText(){
+            //         app2.name = 'widk win!';
+            //     }
+            // },
+        })
+        // const app2 = new Vue({
+        //     el: '#app2',
+            // data: {
+            //     name: 'widkollector'
+            // },
+            // methods: {
+            //     changeText(){
+            //         app1.name = 'widkollector win!';
+            //     }
+            // },
+        // })
+    </script>
+</body>
+
+</html>
